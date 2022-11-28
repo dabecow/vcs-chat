@@ -1,0 +1,24 @@
+.chat {
+      max-width:800px;
+      margin: auto;
+      padding: 1.5vw;
+      border: 1px solid black;
+      border-radius: 30px;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      text-align: center;
+}
+form {
+      margin: auto;
+}
+
+.chat-view {
+}
+
+.message {
+    border: 1px solid black;
+    border-radius: 30px;
+    text-align: left;
+    margin-top: 1vw;
+    padding: 1.5vw;
+
+}
