@@ -43,17 +43,22 @@ public class VcsProcessorImpl<T> implements VcsProcessor<T> {
 
     @Override
     public void addBranch(String branchName) {
-        VcsBranch branch;
+        var branch = new VcsBranch(branchName);
+
         if (head instanceof VcsBranch) {
-            branch = new VcsBranch(branchName);
             branch.setEntryUuid(((VcsBranch) head).getEntryUuid());
-        } else {
-            branch = new VcsBranch(branchName);
+        } else if (Objects.nonNull(head)){
+            branch.setEntryUuid(head.getUuid());
         }
 
         vcsObjectsRepository.addBranch(branch);
         head = branch;
         state = VcsState.ATTACHED;
+    }
+
+    @Override
+    public List<String> getBranchesNames() {
+        return vcsObjectsRepository.getBranchesNames();
     }
 
     @Override
@@ -94,4 +99,12 @@ public class VcsProcessorImpl<T> implements VcsProcessor<T> {
         return list;
     }
 
+    @Override
+    public VcsState getState() {
+        return this.state;
+    }
+
+    public VcsObject getHead() {
+        return this.head;
+    }
 }
